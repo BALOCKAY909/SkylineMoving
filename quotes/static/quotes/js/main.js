@@ -96,4 +96,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // Hide thank you message on input/textarea focus
+    var thankYou = document.getElementById('thankyou-message');
+    if (thankYou) {
+        document.querySelectorAll('input, textarea').forEach(function(el) {
+            el.addEventListener('focus', function() {
+                thankYou.style.display = 'none';
+            });
+        });
+    }
 }); 
