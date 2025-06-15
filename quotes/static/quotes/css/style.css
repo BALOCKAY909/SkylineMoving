@@ -229,3 +229,15 @@ button[type="submit"]:hover {
 .about-us-content p:last-child {
     margin-bottom: 0;
 }
+
+/* Header Button Hover Effects */
+a[href^="tel:"], a[href*="facebook"] {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.2s, color 0.2s !important;
+}
+
+a[href^="tel:"]:hover, a[href*="facebook"]:hover {
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 6px 20px 0 rgba(255, 176, 71, 0.3) !important;
+    background: linear-gradient(90deg, #ffb347 0%, #ff7f50 100%) !important;
+    color: #fff !important;
+}
