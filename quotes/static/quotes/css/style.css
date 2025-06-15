@@ -201,3 +201,31 @@ button[type="submit"]:hover {
 .indicator:hover {
     background: #ffe066;
 }
+
+/* About Us Section Styles */
+.about-us-container {
+    background: #fff !important;
+    max-width: 420px;
+    margin: 2rem auto;
+    padding: 2rem 2.5rem;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px 0 rgba(255, 176, 71, 0.15);
+    border: 2px solid #ffe066;
+    text-align: left;
+}
+
+.about-us-content {
+    margin-top: 1rem;
+}
+
+.about-us-content p {
+    color: #222;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+    text-align: justify;
+}
+
+.about-us-content p:last-child {
+    margin-bottom: 0;
+}
