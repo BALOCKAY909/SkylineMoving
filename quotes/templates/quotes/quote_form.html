@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skyline Moving - Get a Quote</title>
-    <link rel="stylesheet" href="{% static 'quotes/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'quotes/css/style.css' %}?v=3">
 </head>
 <body>
     <div style="position: absolute; top: 24px; left: 24px; z-index: 10; text-align: left;">
@@ -31,7 +31,35 @@
                 <button type="submit">Submit</button>
             </form>
         </div>
+        
+        <!-- Image Carousel Section -->
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{% static 'quotes/img/IMG_0507.jpg' %}" alt="Moving Service 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'quotes/img/IMG_0508.jpg' %}" alt="Moving Service 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'quotes/img/IMG_4672.jpeg' %}" alt="Moving Service 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'quotes/img/IMG_4691.JPG' %}" alt="Moving Service 4">
+                    </div>
+                </div>
+                <button class="carousel-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
+                <button class="carousel-btn next-btn" onclick="changeSlide(1)">&#10095;</button>
+                <div class="carousel-indicators">
+                    <span class="indicator active" onclick="currentSlide(1)"></span>
+                    <span class="indicator" onclick="currentSlide(2)"></span>
+                    <span class="indicator" onclick="currentSlide(3)"></span>
+                    <span class="indicator" onclick="currentSlide(4)"></span>
+                </div>
+            </div>
+        </div>
     </div>
-    <script src="{% static 'quotes/js/main.js' %}"></script>
+    <script src="{% static 'quotes/js/main.js' %}?v=3"></script>
 </body>
 </html> 

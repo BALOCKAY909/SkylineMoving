@@ -107,3 +107,114 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 }); 
+
+// Carousel functionality
+let currentSlideIndex = 0;
+let autoSlideInterval;
+
+function showSlide(index) {
+    const slides = document.querySelectorAll('.carousel-item');
+    const indicators = document.querySelectorAll('.indicator');
+    
+    // Hide all slides
+    slides.forEach(slide => slide.classList.remove('active'));
+    indicators.forEach(indicator => indicator.classList.remove('active'));
+    
+    // Show current slide
+    if (slides[index]) {
+        slides[index].classList.add('active');
+        indicators[index].classList.add('active');
+    }
+}
+
+function changeSlide(direction) {
+    const slides = document.querySelectorAll('.carousel-item');
+    currentSlideIndex += direction;
+    
+    if (currentSlideIndex >= slides.length) {
+        currentSlideIndex = 0;
+    } else if (currentSlideIndex < 0) {
+        currentSlideIndex = slides.length - 1;
+    }
+    
+    showSlide(currentSlideIndex);
+    
+    // Reset auto-rotation when manually changed
+    resetAutoSlide();
+}
+
+function currentSlide(index) {
+    currentSlideIndex = index - 1;
+    showSlide(currentSlideIndex);
+    
+    // Reset auto-rotation when manually changed
+    resetAutoSlide();
+}
+
+function nextSlide() {
+    const slides = document.querySelectorAll('.carousel-item');
+    currentSlideIndex++;
+    if (currentSlideIndex >= slides.length) {
+        currentSlideIndex = 0;
+    }
+    console.log('Auto-advancing to slide:', currentSlideIndex + 1);
+    showSlide(currentSlideIndex);
+}
+
+function startAutoSlide() {
+    console.log('Starting auto-slide with 5 second intervals');
+    autoSlideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+}
+
+function resetAutoSlide() {
+    clearInterval(autoSlideInterval);
+    startAutoSlide();
+}
+
+// Initialize carousel when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, initializing carousel...');
+    const slides = document.querySelectorAll('.carousel-item');
+    const indicators = document.querySelectorAll('.indicator');
+    
+    console.log('Found slides:', slides.length);
+    console.log('Found indicators:', indicators.length);
+    
+    if (slides.length > 0) {
+        // Ensure only first slide is active initially
+        slides.forEach((slide, index) => {
+            slide.classList.remove('active');
+            slide.style.display = 'none';
+            if (index === 0) {
+                slide.classList.add('active');
+                slide.style.display = 'block';
+                console.log('Set first slide as active');
+            }
+        });
+        
+        indicators.forEach((indicator, index) => {
+            indicator.classList.remove('active');
+            if (index === 0) {
+                indicator.classList.add('active');
+            }
+        });
+        
+        showSlide(0);
+        startAutoSlide();
+        console.log('Carousel initialized successfully');
+        
+        // Pause auto-rotation when hovering over carousel
+        const carousel = document.querySelector('.carousel');
+        if (carousel) {
+            carousel.addEventListener('mouseenter', function() {
+                clearInterval(autoSlideInterval);
+            });
+            
+            carousel.addEventListener('mouseleave', function() {
+                startAutoSlide();
+            });
+        }
+    } else {
+        console.log('No carousel slides found!');
+    }
+});
