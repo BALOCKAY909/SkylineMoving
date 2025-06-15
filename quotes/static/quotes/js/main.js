@@ -129,6 +129,10 @@ function showSlide(index) {
 
 function changeSlide(direction) {
     const slides = document.querySelectorAll('.carousel-item');
+    
+    // Stop current auto-rotation
+    clearInterval(autoSlideInterval);
+    
     currentSlideIndex += direction;
     
     if (currentSlideIndex >= slides.length) {
@@ -139,16 +143,19 @@ function changeSlide(direction) {
     
     showSlide(currentSlideIndex);
     
-    // Reset auto-rotation when manually changed
-    resetAutoSlide();
+    // Start fresh 5-second timer from this moment
+    startAutoSlide();
 }
 
 function currentSlide(index) {
+    // Stop current auto-rotation
+    clearInterval(autoSlideInterval);
+    
     currentSlideIndex = index - 1;
     showSlide(currentSlideIndex);
     
-    // Reset auto-rotation when manually changed
-    resetAutoSlide();
+    // Start fresh 5-second timer from this moment
+    startAutoSlide();
 }
 
 function nextSlide() {
@@ -162,13 +169,15 @@ function nextSlide() {
 }
 
 function startAutoSlide() {
-    console.log('Starting auto-slide with 5 second intervals');
+    // Clear any existing interval first to prevent multiple timers
+    clearInterval(autoSlideInterval);
+    console.log('Starting fresh auto-slide timer - 5 seconds from now');
     autoSlideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
 }
 
-function resetAutoSlide() {
+function stopAutoSlide() {
     clearInterval(autoSlideInterval);
-    startAutoSlide();
+    console.log('Auto-slide stopped');
 }
 
 // Initialize carousel when DOM is loaded
@@ -207,11 +216,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const carousel = document.querySelector('.carousel');
         if (carousel) {
             carousel.addEventListener('mouseenter', function() {
-                clearInterval(autoSlideInterval);
+                stopAutoSlide();
+                console.log('Hover detected - auto-slide paused');
             });
             
             carousel.addEventListener('mouseleave', function() {
                 startAutoSlide();
+                console.log('Hover ended - auto-slide resumed');
             });
         }
     } else {
