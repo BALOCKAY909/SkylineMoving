@@ -6,24 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta Tags -->
-    <title>Skyline Moving - Professional Moving Services | Get Your Free Quote Today</title>
-    <meta name="description" content="Skyline Moving provides professional, reliable, and affordable moving services. Family-owned business with years of experience. Get your free moving quote today! Serving local and long-distance moves.">
-    <meta name="keywords" content="Skyline Moving, professional movers, moving company, moving services, local moving, long distance moving, residential moving, commercial moving, free moving quote, reliable movers, affordable moving">
+    <title>Skyline Moving Nebraska - Professional Moving Company Omaha Lincoln | Free Quote</title>
+    <meta name="description" content="Skyline Moving - Nebraska's trusted professional moving company serving Omaha, Lincoln, and surrounding areas. Local and long-distance moving services. Family-owned movers with 6+ years experience. Get your free moving quote today!">
+    <meta name="keywords" content="Nebraska moving company, Omaha movers, Lincoln moving services, professional movers Nebraska, local moving Omaha, residential movers Lincoln, Nebraska moving services, affordable movers, reliable moving company Nebraska, Skyline Moving">
     <meta name="author" content="Skyline Moving">
     <meta name="robots" content="index, follow">
     
     <!-- Open Graph Meta Tags (for social media sharing) -->
-    <meta property="og:title" content="Skyline Moving - Professional Moving Services">
-    <meta property="og:description" content="Professional, reliable, and affordable moving services. Family-owned business with years of experience. Get your free quote today!">
+    <meta property="og:title" content="Skyline Moving Nebraska - Professional Moving Company Omaha Lincoln">
+    <meta property="og:description" content="Nebraska's trusted professional moving company serving Omaha, Lincoln, and surrounding areas. Family-owned movers with 6+ years experience. Get your free quote today!">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://skylinemovinggp.com">
     <meta property="og:image" content="https://skylinemovinggp.com{% static 'quotes/img/IMG_4687.jpg' %}">
-    <meta property="og:site_name" content="Skyline Moving">
+    <meta property="og:site_name" content="Skyline Moving Nebraska">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Skyline Moving - Professional Moving Services">
-    <meta name="twitter:description" content="Professional, reliable, and affordable moving services. Get your free quote today!">
+    <meta name="twitter:title" content="Skyline Moving Nebraska - Professional Moving Company">
+    <meta name="twitter:description" content="Nebraska's trusted professional moving company. Family-owned movers serving Omaha, Lincoln, and surrounding areas.">
     <meta name="twitter:image" content="https://skylinemovinggp.com{% static 'quotes/img/IMG_4687.jpg' %}">
     
     <!-- Canonical URL -->
@@ -40,30 +40,50 @@
         "@context": "https://schema.org",
         "@type": "MovingCompany",
         "name": "Skyline Moving",
-        "description": "Professional, reliable, and affordable moving services. Family-owned business with years of experience serving local and long-distance moves.",
+        "alternateName": "Skyline Moving Nebraska",
+        "description": "Nebraska's trusted professional moving company serving Omaha, Lincoln, and surrounding areas. Family-owned business with 6+ years of moving experience providing reliable, affordable local and long-distance moving services.",
         "url": "https://skylinemovinggp.com",
         "logo": "https://skylinemovinggp.com{% static 'quotes/img/IMG_4687.jpg' %}",
         "image": "https://skylinemovinggp.com{% static 'quotes/img/IMG_4687.jpg' %}",
         "telephone": "531-222-5122",
         "priceRange": "$$",
-        "serviceArea": {
-            "@type": "GeoCircle",
-            "geoMidpoint": {
-                "@type": "GeoCoordinates",
-                "latitude": "41.2033",
-                "longitude": "-95.9308"
-            },
-            "geoRadius": "50000"
+        "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "NE",
+            "addressCountry": "US",
+            "addressLocality": "Nebraska"
         },
-        "services": [
-            "Residential Moving",
-            "Commercial Moving",
-            "Local Moving",
-            "Long Distance Moving",
-            "Packing Services",
-            "Moving Consultation"
+        "serviceArea": [
+            {
+                "@type": "City",
+                "name": "Omaha",
+                "containedInPlace": {
+                    "@type": "State",
+                    "name": "Nebraska"
+                }
+            },
+            {
+                "@type": "City", 
+                "name": "Lincoln",
+                "containedInPlace": {
+                    "@type": "State",
+                    "name": "Nebraska"
+                }
+            },
+            {
+                "@type": "State",
+                "name": "Nebraska"
+            }
         ],
-        "areaServed": "Nebraska",
+        "services": [
+            "Residential Moving Services Nebraska",
+            "Commercial Moving Omaha Lincoln", 
+            "Local Moving Services Nebraska",
+            "Long Distance Moving",
+            "Professional Packing Services",
+            "Moving Consultation Nebraska"
+        ],
+        "areaServed": "Nebraska, Omaha, Lincoln",
         "founder": {
             "@type": "Person",
             "name": "Skyline Moving Team"
@@ -77,11 +97,13 @@
             "@type": "ContactPoint",
             "telephone": "531-222-5122",
             "contactType": "customer service",
-            "availableLanguage": "English"
+            "availableLanguage": "English",
+            "areaServed": "Nebraska"
         },
         "sameAs": [
             "https://www.facebook.com/people/Skyline-Movers/61575602127611/"
-        ]
+        ],
+        "keywords": "Nebraska moving company, Omaha movers, Lincoln moving services, professional movers Nebraska"
     }
     </script>
     
@@ -110,22 +132,22 @@
     </div>
     <div class="quote-form-bg">
         <div class="quote-form-container">
-            <h1>Get Your Free Moving Quote - Skyline Moving</h1>
+            <h1>Nebraska's Professional Moving Company - Free Quote</h1>
             {% if success %}
                 <div id="thankyou-message" style="background:#ffe066;color:#222;padding:1em;border-radius:8px;margin-bottom:1em;text-align:center;">
-                    <strong>Thank you!</strong> Your free moving quote request has been submitted. We'll contact you soon with a personalized quote for your move.
+                    <strong>Thank you!</strong> Your free moving quote request has been submitted. We'll contact you soon with a personalized quote for your Nebraska move.
                 </div>
             {% endif %}
             <form method="post" itemscope itemtype="https://schema.org/ContactForm">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit" aria-label="Submit moving quote request">Get My Free Quote</button>
+                <button type="submit" aria-label="Submit moving quote request">Get My Free Nebraska Moving Quote</button>
             </form>
         </div>
         
         <!-- Image Carousel Section -->
         <div class="carousel-container">
-            <h3>Our Professional Moving Services</h3>
+            <h3>Professional Nebraska Moving Services</h3>
             <div class="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -154,15 +176,15 @@
         
         <!-- About Us Section -->
         <div class="about-us-container">
-            <h2>About Skyline Moving - Professional Moving Services</h2>
+            <h2>About Skyline Moving - Nebraska's Trusted Moving Company</h2>
             <div class="about-us-content">
-                <p>At <strong>Skyline Moving</strong>, we're two motivated college students with a combined 6 years of hands-on professional moving experience. What started as a side hustle quickly grew into a full-time commitment to providing <em>affordable, reliable, and high-quality moving services</em> across Omaha, Lincoln, and the surrounding Nebraska areas.</p>
+                <p>At <strong>Skyline Moving</strong>, we're <em>Nebraska's premier moving company</em> - two motivated college students with a combined 6 years of hands-on professional moving experience. What started as a side hustle quickly grew into a full-time commitment to providing <em>affordable, reliable, and high-quality moving services</em> across <strong>Omaha, Lincoln</strong>, and the surrounding Nebraska areas.</p>
                 
                 <p>We know how stressful moving can be, so our goal is simple: make it easy, quick, and worry-free for you. We work efficiently, we're respectful of your time, and—most importantly—we handle your furniture and belongings with the same care we'd give our own.</p>
                 
-                <p>Whether you're moving across town, need <strong>local moving services</strong>, <strong>residential moving</strong>, or just need help with loading and unloading, we're here to help—at competitive prices that won't break the bank. Our <em>professional moving team</em> serves the greater Nebraska area with dedication and expertise.</p>
+                <p>Whether you're moving across <strong>Omaha</strong>, relocating within <strong>Lincoln</strong>, need <strong>local moving services in Nebraska</strong>, <strong>residential moving</strong>, or just need help with loading and unloading, we're here to help—at competitive prices that won't break the bank. Our <em>professional Nebraska moving team</em> serves the greater Nebraska area with dedication and expertise.</p>
                 
-                <p><strong>Get your free moving quote today!</strong> Call us at <a href="tel:531-222-5122">531-222-5122</a> or fill out our quote form above.</p>
+                <p><strong>Serving all of Nebraska!</strong> Call us at <a href="tel:531-222-5122">531-222-5122</a> or fill out our quote form above for your <strong>free Nebraska moving quote today!</strong></p>
             </div>
         </div>
     </div>
