@@ -9,7 +9,7 @@ body {
 .logo-container {
     background: #fff;
     text-align: center;
-    padding: 2rem 0 1rem 0;
+    padding: 3rem 0 1rem 0;
 }
 
 .logo {
@@ -257,7 +257,7 @@ button[type="submit"]:hover {
 /* Header Button Styling */
 .header-button-left {
     position: absolute;
-    top: 24px;
+    top: 16px;
     left: 24px;
     z-index: 10;
     text-align: left;
@@ -265,7 +265,7 @@ button[type="submit"]:hover {
 
 .header-button-right {
     position: absolute;
-    top: 24px;
+    top: 16px;
     right: 24px;
     z-index: 10;
     text-align: right;
@@ -296,12 +296,12 @@ button[type="submit"]:hover {
 @media (max-width: 768px) {
     .header-button-left {
         left: 12px;
-        top: 12px;
+        top: 8px;
     }
     
     .header-button-right {
         right: 12px;
-        top: 12px;
+        top: 8px;
     }
     
     .header-button {
@@ -317,12 +317,12 @@ button[type="submit"]:hover {
 @media (max-width: 480px) {
     .header-button-left {
         left: 8px;
-        top: 8px;
+        top: 6px;
     }
     
     .header-button-right {
         right: 8px;
-        top: 8px;
+        top: 6px;
     }
     
     .header-button {
