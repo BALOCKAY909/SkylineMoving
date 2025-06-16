@@ -37,7 +37,7 @@ def sitemap_xml(request):
     content = """<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://skylinemovinggp.com/</loc>
+        <loc>https://skyline-moving-gp-9286c2aaa5d9.herokuapp.com/</loc>
         <lastmod>2025-06-15</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
