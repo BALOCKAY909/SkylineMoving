@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://skylinemovinggp.com/sitemap.xml
+
+# Block access to admin and other sensitive areas
+Disallow: /admin/
+Disallow: /*.pyc$
+Disallow: /static/admin/

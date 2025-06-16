@@ -125,6 +125,14 @@ button[type="submit"]:hover {
     box-shadow: 0 8px 32px 0 rgba(255, 176, 71, 0.25);
 }
 
+.carousel-container h3 {
+    text-align: center;
+    color: #222;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
 .carousel {
     position: relative;
     max-width: 100%;

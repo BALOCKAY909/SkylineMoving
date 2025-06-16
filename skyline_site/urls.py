@@ -16,8 +16,38 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
+from django.views.generic import TemplateView
+import os
+
+def robots_txt(request):
+    content = """User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://skylinemovinggp.com/sitemap.xml
+
+# Block access to admin and other sensitive areas
+Disallow: /admin/
+Disallow: /*.pyc$
+Disallow: /static/admin/"""
+    return HttpResponse(content, content_type="text/plain")
+
+def sitemap_xml(request):
+    content = """<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://skylinemovinggp.com/</loc>
+        <lastmod>2025-06-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+</urlset>"""
+    return HttpResponse(content, content_type="application/xml")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('quotes.urls')),
+    path('robots.txt', robots_txt, name='robots_txt'),
+    path('sitemap.xml', sitemap_xml, name='sitemap_xml'),
 ]
