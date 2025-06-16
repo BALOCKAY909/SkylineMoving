@@ -254,14 +254,80 @@ button[type="submit"]:hover {
     margin-bottom: 0;
 }
 
-/* Header Button Hover Effects */
-a[href^="tel:"], a[href*="facebook"] {
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.2s, color 0.2s !important;
+/* Header Button Styling */
+.header-button-left {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    z-index: 10;
+    text-align: left;
 }
 
-a[href^="tel:"]:hover, a[href*="facebook"]:hover {
-    transform: translateY(-3px) scale(1.05) !important;
-    box-shadow: 0 6px 20px 0 rgba(255, 176, 71, 0.3) !important;
-    background: linear-gradient(90deg, #ffb347 0%, #ff7f50 100%) !important;
-    color: #fff !important;
+.header-button-right {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 10;
+    text-align: right;
+}
+
+.header-button {
+    display: inline-block;
+    background: linear-gradient(90deg, #ffe066 0%, #ffb347 100%);
+    color: #222;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    text-decoration: none;
+    box-shadow: 0 2px 8px 0 rgba(255, 176, 71, 0.10);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.2s, color 0.2s;
+}
+
+.header-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px 0 rgba(255, 176, 71, 0.3);
+    background: linear-gradient(90deg, #ffb347 0%, #ff7f50 100%);
+    color: #fff;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .header-button-left {
+        left: 12px;
+        top: 12px;
+    }
+    
+    .header-button-right {
+        right: 12px;
+        top: 12px;
+    }
+    
+    .header-button {
+        padding: 0.4rem 1rem;
+        font-size: 0.9rem;
+        max-width: 140px;
+        text-align: center;
+        word-wrap: break-word;
+    }
+}
+
+/* Extra small screens (phones in portrait) */
+@media (max-width: 480px) {
+    .header-button-left {
+        left: 8px;
+        top: 8px;
+    }
+    
+    .header-button-right {
+        right: 8px;
+        top: 8px;
+    }
+    
+    .header-button {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.8rem;
+        max-width: 120px;
+    }
 }
