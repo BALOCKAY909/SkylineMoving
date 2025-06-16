@@ -25,7 +25,7 @@ def robots_txt(request):
 Allow: /
 
 # Sitemap location
-Sitemap: https://skylinemovinggp.com/sitemap.xml
+Sitemap: https://skyline-moving-gp-9286c2aaa5d9.herokuapp.com/sitemap.xml
 
 # Block access to admin and other sensitive areas
 Disallow: /admin/
