@@ -16,8 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.http import HttpResponse
+from django.http import HttpResponse, FileResponse
 from django.views.generic import TemplateView
+from django.conf import settings
 import os
 
 def robots_txt(request):
@@ -45,9 +46,14 @@ def sitemap_xml(request):
 </urlset>"""
     return HttpResponse(content, content_type="application/xml")
 
+def favicon_view(request):
+    favicon_path = os.path.join(settings.BASE_DIR, 'quotes', 'static', 'quotes', 'img', 'IMG_4687.jpg')
+    return FileResponse(open(favicon_path, 'rb'), content_type='image/jpeg')
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('quotes.urls')),
     path('robots.txt', robots_txt, name='robots_txt'),
     path('sitemap.xml', sitemap_xml, name='sitemap_xml'),
+    path('favicon.ico', favicon_view, name='favicon'),
 ]
