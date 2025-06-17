@@ -10,6 +10,7 @@ body {
     background: #fff;
     text-align: center;
     padding: 3rem 0 1rem 0;
+    position: relative; /* Add relative positioning for absolute children */
 }
 
 .logo {
@@ -265,7 +266,7 @@ button[type="submit"]:hover {
 /* Header Button Styling */
 .header-button-left {
     position: absolute;
-    top: 16px;
+    top: 24px;
     left: 24px;
     z-index: 10;
     text-align: left;
@@ -273,7 +274,7 @@ button[type="submit"]:hover {
 
 .header-button-right {
     position: absolute;
-    top: 16px;
+    top: 24px;
     right: 24px;
     z-index: 10;
     text-align: right;
