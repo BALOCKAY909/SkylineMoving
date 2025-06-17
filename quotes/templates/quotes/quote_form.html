@@ -29,10 +29,21 @@
     <!-- Canonical URL - Using consistent www subdomain -->
     <link rel="canonical" href="https://www.skylinemovinggp.com/">
     
-    <!-- Favicon -->
+    <!-- Favicon - Multiple formats for better compatibility -->
     <link rel="icon" type="image/jpeg" href="{% static 'quotes/img/IMG_4687.jpg' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'quotes/img/IMG_4687.jpg' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'quotes/img/IMG_4687.jpg' %}">
+    <link rel="icon" type="image/png" sizes="48x48" href="{% static 'quotes/img/IMG_4687.jpg' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'quotes/img/IMG_4687.jpg' %}">
+    <link rel="shortcut icon" href="{% static 'quotes/img/IMG_4687.jpg' %}">
     
-    <link rel="stylesheet" href="{% static 'quotes/css/style.css' %}?v=14">
+    <!-- Open Graph Image (helps with link previews) -->
+    <meta property="og:image" content="https://www.skylinemovinggp.com{% static 'quotes/img/IMG_4687.jpg' %}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/jpeg">>
+    
+    <link rel="stylesheet" href="{% static 'quotes/css/style.css' %}?v=15">
     
     <!-- Structured Data (JSON-LD) for Rich Snippets -->
     <script type="application/ld+json">
