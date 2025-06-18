@@ -52,12 +52,14 @@ def quote_request(request):
         form = QuoteRequestForm()
         review_form = ReviewForm()
     
+    all_reviews = Review.objects.all().order_by('-created_at')
     return render(request, 'quotes/quote_form.html', {
         'form': form, 
         'review_form': review_form,
         'success': success,
         'review_success': review_success,
-        'reviews': Review.objects.all().order_by('-created_at')[:4]  # Show latest 4 reviews
+        'reviews': all_reviews[:4],  # Show latest 4 reviews
+        'total_reviews_count': all_reviews.count()  # Pass total count
     })
 
 def thank_you(request):
