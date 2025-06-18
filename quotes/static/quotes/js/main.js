@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Star Rating Functionality
 document.addEventListener('DOMContentLoaded', function() {
     const stars = document.querySelectorAll('.star');
-    const ratingInput = document.getElementById('id_rating'); // Django form field
+    const ratingInput = document.getElementById('reviewRating'); // Django form field
     let currentRating = 5; // Default to 5 stars
     
     // Set initial 5-star rating
@@ -292,7 +292,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (reviewForm) {
         reviewForm.addEventListener('submit', function(e) {
             const rating = ratingInput ? ratingInput.value : '';
-            const reviewText = document.getElementById('id_description') ? document.getElementById('id_description').value : '';
+            const reviewText = document.getElementById('reviewText') ? document.getElementById('reviewText').value : '';
             
             // Check if both rating and description are empty
             if (!rating && !reviewText.trim()) {
