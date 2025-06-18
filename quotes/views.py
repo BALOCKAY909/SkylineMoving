@@ -3,6 +3,7 @@ from .forms import QuoteRequestForm, ReviewForm
 from .models import Review
 from django.core.mail import send_mail
 from django.http import JsonResponse
+from django.db.models import Case, When, IntegerField
 import json
 
 # Create your views here.
@@ -52,13 +53,25 @@ def quote_request(request):
         form = QuoteRequestForm()
         review_form = ReviewForm()
     
-    all_reviews = Review.objects.all().order_by('-created_at')
+    # Sort reviews by rating (5 stars first, then 4, 3, 2, 1, then none)
+    all_reviews = Review.objects.annotate(
+        rating_order=Case(
+            When(rating='5', then=5),
+            When(rating='4', then=4),
+            When(rating='3', then=3),
+            When(rating='2', then=2),
+            When(rating='1', then=1),
+            When(rating='none', then=0),
+            output_field=IntegerField(),
+        )
+    ).order_by('-rating_order', '-created_at')
+    
     return render(request, 'quotes/quote_form.html', {
         'form': form, 
         'review_form': review_form,
         'success': success,
         'review_success': review_success,
-        'reviews': all_reviews[:4],  # Show latest 4 reviews
+        'reviews': all_reviews[:4],  # Show top 4 reviews sorted by rating
         'total_reviews_count': all_reviews.count()  # Pass total count
     })
 
@@ -67,7 +80,19 @@ def thank_you(request):
 
 def all_reviews(request):
     """Display all reviews on a dedicated page"""
-    reviews = Review.objects.all().order_by('-created_at')
+    # Sort reviews by rating (5 stars first, then 4, 3, 2, 1, then none)
+    reviews = Review.objects.annotate(
+        rating_order=Case(
+            When(rating='5', then=5),
+            When(rating='4', then=4),
+            When(rating='3', then=3),
+            When(rating='2', then=2),
+            When(rating='1', then=1),
+            When(rating='none', then=0),
+            output_field=IntegerField(),
+        )
+    ).order_by('-rating_order', '-created_at')
+    
     return render(request, 'quotes/all_reviews.html', {
         'reviews': reviews
     })
