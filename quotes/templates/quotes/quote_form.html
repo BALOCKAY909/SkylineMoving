@@ -179,7 +179,7 @@
                         <strong>Thank you!</strong> Your review has been submitted successfully. We appreciate your feedback!
                     </div>
                 {% endif %}
-                <form class="review-form" method="post" id="reviewForm">
+                <form class="review-form" method="post" id="reviewForm" novalidate>
                     {% csrf_token %}
                     <div class="form-group">
                         <label for="reviewName">Your Name (optional):</label>

@@ -13,7 +13,7 @@ def quote_request(request):
     
     if request.method == 'POST':
         # Check if it's a review submission
-        if 'reviewText' in request.POST or 'reviewRating' in request.POST:
+        if 'description' in request.POST or 'rating' in request.POST:
             review_form = ReviewForm(request.POST)
             if review_form.is_valid():
                 # Save review to database
