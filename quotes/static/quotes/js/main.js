@@ -25,6 +25,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     document.querySelectorAll('input, textarea').forEach(function(el) {
+        // Skip validation for review form name field (it's optional)
+        if (el.name === 'name' && el.id === 'reviewName') {
+            return;
+        }
+        
         el.addEventListener('blur', function() {
             if (!el.value) {
                 showError(el);
@@ -71,6 +76,11 @@ document.addEventListener('DOMContentLoaded', function() {
         form.addEventListener('submit', function(e) {
             var valid = true;
             document.querySelectorAll('input, textarea').forEach(function(el) {
+                // Skip validation for review form name field (it's optional)
+                if (el.name === 'name' && el.id === 'reviewName') {
+                    return;
+                }
+                
                 if (!el.value) {
                     showError(el);
                     valid = false;

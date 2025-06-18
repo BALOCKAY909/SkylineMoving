@@ -25,7 +25,9 @@ class QuoteRequestForm(forms.Form):
 class ReviewForm(forms.Form):
     name = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={
         'placeholder': 'Leave blank for Anonymous',
-        'id': 'reviewName'
+        'id': 'reviewName',
+        'aria-required': 'false',
+        'data-validate': 'false'
     }))
     rating = forms.ChoiceField(choices=[
         ('1', '1'),
