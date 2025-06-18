@@ -57,8 +57,15 @@ def quote_request(request):
         'review_form': review_form,
         'success': success,
         'review_success': review_success,
-        'reviews': Review.objects.all()[:20]  # Show latest 20 reviews
+        'reviews': Review.objects.all().order_by('-created_at')[:4]  # Show latest 4 reviews
     })
 
 def thank_you(request):
     return render(request, 'quotes/thank_you.html')
+
+def all_reviews(request):
+    """Display all reviews on a dedicated page"""
+    reviews = Review.objects.all().order_by('-created_at')
+    return render(request, 'quotes/all_reviews.html', {
+        'reviews': reviews
+    })

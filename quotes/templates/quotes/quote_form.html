@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'quotes/css/style.css' %}?v=1.9">   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta Tags -->
@@ -247,6 +247,14 @@
                             </div>
                         </div>
                     {% endfor %}
+                </div>
+                
+                <!-- See All Reviews Button -->
+                <div class="see-all-reviews">
+                    <a href="{% url 'all_reviews' %}" class="see-all-button">
+                        <span class="see-all-text">See all Reviews</span>
+                        <span class="down-arrow">↓</span>
+                    </a>
                 </div>
             {% else %}
                 <div class="no-reviews">
