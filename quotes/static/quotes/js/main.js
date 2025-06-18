@@ -246,12 +246,12 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const stars = document.querySelectorAll('.star');
     const ratingInput = document.getElementById('reviewRating'); // Django form field
-    let currentRating = 5; // Default to 5 stars
+    let currentRating = 0; // Default to no rating
     
-    // Set initial 5-star rating
-    updateStarDisplay(5);
+    // Set initial state - no stars selected
+    updateStarDisplay(0);
     if (ratingInput) {
-        ratingInput.value = 5;
+        ratingInput.value = '';
     }
     
     stars.forEach(star => {

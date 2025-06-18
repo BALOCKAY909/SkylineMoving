@@ -35,7 +35,7 @@ class ReviewForm(forms.Form):
         ('3', '3'),
         ('4', '4'),
         ('5', '5'),
-    ], required=False, initial='5', widget=forms.HiddenInput(attrs={'id': 'reviewRating'}))
+    ], required=False, widget=forms.HiddenInput(attrs={'id': 'reviewRating'}))
     description = forms.CharField(widget=forms.Textarea(attrs={
         'rows': 4,
         'placeholder': 'Tell us about your experience with Skyline Moving...',
