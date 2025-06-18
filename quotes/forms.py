@@ -20,4 +20,41 @@ class QuoteRequestForm(forms.Form):
         email = self.cleaned_data['email']
         if not email.endswith('.com'):
             raise forms.ValidationError('Email must end with .com')
-        return email 
+        return email
+
+class ReviewForm(forms.Form):
+    name = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={
+        'placeholder': 'Leave blank for Anonymous',
+        'id': 'reviewName'
+    }))
+    rating = forms.ChoiceField(choices=[
+        ('1', '1'),
+        ('2', '2'),
+        ('3', '3'),
+        ('4', '4'),
+        ('5', '5'),
+    ], required=False, initial='5', widget=forms.HiddenInput(attrs={'id': 'reviewRating'}))
+    description = forms.CharField(widget=forms.Textarea(attrs={
+        'rows': 4,
+        'placeholder': 'Tell us about your experience with Skyline Moving...',
+        'id': 'reviewText'
+    }), required=False)
+    
+    def clean(self):
+        cleaned_data = super().clean()
+        rating = cleaned_data.get('rating')
+        description = cleaned_data.get('description')
+        
+        # If both rating and description are empty, raise validation error
+        if not rating and not description:
+            raise forms.ValidationError('Please provide either a rating or a review description.')
+        
+        # Set defaults for empty fields
+        if not cleaned_data.get('name'):
+            cleaned_data['name'] = 'Anonymous'
+        if not rating:
+            cleaned_data['rating'] = 'none'
+        if not description:
+            cleaned_data['description'] = 'none'
+            
+        return cleaned_data

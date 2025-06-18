@@ -233,16 +233,21 @@ document.addEventListener('DOMContentLoaded', function() {
 // Star Rating Functionality
 document.addEventListener('DOMContentLoaded', function() {
     const stars = document.querySelectorAll('.star');
-    const ratingInput = document.getElementById('reviewRating');
+    const ratingInput = document.getElementById('id_rating'); // Django form field
     let currentRating = 5; // Default to 5 stars
     
     // Set initial 5-star rating
     updateStarDisplay(5);
+    if (ratingInput) {
+        ratingInput.value = 5;
+    }
     
     stars.forEach(star => {
         star.addEventListener('click', function() {
             currentRating = parseInt(this.getAttribute('data-rating'));
-            ratingInput.value = currentRating;
+            if (ratingInput) {
+                ratingInput.value = currentRating;
+            }
             updateStarDisplay(currentRating);
         });
         
@@ -253,9 +258,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Reset to current rating when mouse leaves star area
-    document.querySelector('.star-rating').addEventListener('mouseleave', function() {
-        updateStarDisplay(currentRating);
-    });
+    const starRating = document.querySelector('.star-rating');
+    if (starRating) {
+        starRating.addEventListener('mouseleave', function() {
+            updateStarDisplay(currentRating);
+        });
+    }
     
     function updateStarDisplay(rating) {
         stars.forEach((star, index) => {
@@ -267,38 +275,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Review Form Submission
+    // Form validation (client-side backup)
     const reviewForm = document.getElementById('reviewForm');
     if (reviewForm) {
         reviewForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+            const rating = ratingInput ? ratingInput.value : '';
+            const reviewText = document.getElementById('id_description') ? document.getElementById('id_description').value : '';
             
-            const name = document.getElementById('reviewName').value || 'Anonymous';
-            const rating = document.getElementById('reviewRating').value;
-            const reviewText = document.getElementById('reviewText').value;
-            
-            if (reviewText && rating) {
-                // Show success message
-                const successDiv = document.createElement('div');
-                successDiv.style.cssText = 'background:#ffe066;color:#222;padding:1em;border-radius:8px;margin-bottom:1em;text-align:center;';
-                successDiv.innerHTML = `<strong>Thank you, ${name}!</strong> Your ${rating}-star review has been submitted. We appreciate your feedback!`;
-                
-                // Insert success message at top of form
-                reviewForm.parentNode.insertBefore(successDiv, reviewForm);
-                
-                // Reset form
-                reviewForm.reset();
-                currentRating = 5;
-                ratingInput.value = 5;
-                updateStarDisplay(5);
-                
-                // Remove success message after 5 seconds
-                setTimeout(() => {
-                    successDiv.remove();
-                }, 5000);
-                
-                // Scroll to success message
-                successDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // Check if both rating and description are empty
+            if (!rating && !reviewText.trim()) {
+                e.preventDefault();
+                alert('Please provide either a rating or a review description.');
+                return false;
             }
         });
     }

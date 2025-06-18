@@ -104,8 +104,12 @@ button[type="submit"]:hover {
 .error-message {
     color: #d32f2f;
     font-size: 0.95em;
-    margin-top: -1em;
     margin-bottom: 1em;
+    text-align: center;
+    background: #ffebee;
+    padding: 0.5em;
+    border-radius: 4px;
+    border-left: 4px solid #d32f2f;
 }
 
 /* Carousel Styles */
@@ -365,6 +369,10 @@ button[type="submit"]:hover {
     outline: none;
     border-color: #ffb347;
     box-shadow: 0 0 0 3px rgba(255, 179, 71, 0.2);
+}
+
+.review-form input[type="hidden"] {
+    display: none;
 }
 
 .review-form textarea {
