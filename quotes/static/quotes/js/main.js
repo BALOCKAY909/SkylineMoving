@@ -302,4 +302,32 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+    
+    // Hide success message when user interacts with review form
+    const successMessage = document.getElementById('review-success-message');
+    
+    function hideSuccessMessage() {
+        if (successMessage) {
+            successMessage.style.display = 'none';
+        }
+    }
+    
+    // Hide success message on form field interactions
+    const nameField = document.getElementById('reviewName');
+    const descriptionField = document.getElementById('reviewText');
+    
+    if (nameField) {
+        nameField.addEventListener('focus', hideSuccessMessage);
+        nameField.addEventListener('input', hideSuccessMessage);
+    }
+    
+    if (descriptionField) {
+        descriptionField.addEventListener('focus', hideSuccessMessage);
+        descriptionField.addEventListener('input', hideSuccessMessage);
+    }
+    
+    // Hide success message when clicking on stars
+    stars.forEach(star => {
+        star.addEventListener('click', hideSuccessMessage);
+    });
 });
