@@ -25,8 +25,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     document.querySelectorAll('input, textarea').forEach(function(el) {
-        // Skip validation for review form name field (it's optional)
-        if (el.name === 'name' && el.id === 'reviewName') {
+        // Skip validation for review form fields (they're optional)
+        if ((el.name === 'name' && el.id === 'reviewName') || 
+            (el.name === 'description' && el.id === 'reviewText')) {
             return;
         }
         
@@ -76,8 +77,9 @@ document.addEventListener('DOMContentLoaded', function() {
         form.addEventListener('submit', function(e) {
             var valid = true;
             document.querySelectorAll('input, textarea').forEach(function(el) {
-                // Skip validation for review form name field (it's optional)
-                if (el.name === 'name' && el.id === 'reviewName') {
+                // Skip validation for review form fields (they're optional)
+                if ((el.name === 'name' && el.id === 'reviewName') || 
+                    (el.name === 'description' && el.id === 'reviewText')) {
                     return;
                 }
                 
