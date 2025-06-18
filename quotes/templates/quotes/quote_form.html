@@ -39,9 +39,16 @@
     <link rel="icon" type="image/png" sizes="192x192" href="{% static 'quotes/img/IMG_4687.jpg' %}">
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'quotes/img/IMG_4687.jpg' %}">
     
+    <!-- Force favicon refresh with cache busting -->
+    <link rel="icon" href="/favicon.ico?v=2025061701" type="image/x-icon">
+    
     <!-- Additional meta for search engines -->
     <meta name="msapplication-TileImage" content="{% static 'quotes/img/IMG_4687.jpg' %}">
     <meta name="msapplication-TileColor" content="#ffb347">
+    
+    <!-- Help search engines recognize favicon -->
+    <meta name="theme-color" content="#ffb347">
+    <meta name="application-name" content="Skyline Moving Nebraska">
     
     <!-- Open Graph Image (helps with link previews) -->
     <meta property="og:image" content="https://www.skylinemovinggp.com{% static 'quotes/img/IMG_4687.jpg' %}">
@@ -49,7 +56,7 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:type" content="image/jpeg">
     
-    <link rel="stylesheet" href="{% static 'quotes/css/style.css' %}?v=18">
+    <link rel="stylesheet" href="{% static 'quotes/css/style.css' %}?v=19">
     
     <!-- Structured Data (JSON-LD) for Rich Snippets -->
     <script type="application/ld+json">
