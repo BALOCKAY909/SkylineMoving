@@ -56,7 +56,7 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:type" content="image/jpeg">
     
-    <link rel="stylesheet" href="{% static 'quotes/css/style.css' %}?v=20">
+    <link rel="stylesheet" href="{% static 'quotes/css/style.css' %}?v=21">
     
     <!-- Structured Data (JSON-LD) for Rich Snippets -->
     <script type="application/ld+json">
@@ -176,8 +176,8 @@
                 <h1>Leave a Review</h1>
                 <form class="review-form" id="reviewForm">
                     <div class="form-group">
-                        <label for="reviewName">Your Name:</label>
-                        <input type="text" id="reviewName" name="reviewName" required>
+                        <label for="reviewName">Your Name (optional):</label>
+                        <input type="text" id="reviewName" name="reviewName" placeholder="Leave blank for Anonymous">
                     </div>
                     
                     <div class="form-group">

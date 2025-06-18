@@ -273,15 +273,15 @@ document.addEventListener('DOMContentLoaded', function() {
         reviewForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const name = document.getElementById('reviewName').value;
+            const name = document.getElementById('reviewName').value || 'Anonymous';
             const rating = document.getElementById('reviewRating').value;
             const reviewText = document.getElementById('reviewText').value;
             
-            if (name && reviewText && rating) {
+            if (reviewText && rating) {
                 // Show success message
                 const successDiv = document.createElement('div');
                 successDiv.style.cssText = 'background:#ffe066;color:#222;padding:1em;border-radius:8px;margin-bottom:1em;text-align:center;';
-                successDiv.innerHTML = '<strong>Thank you!</strong> Your review has been submitted. We appreciate your feedback!';
+                successDiv.innerHTML = `<strong>Thank you, ${name}!</strong> Your ${rating}-star review has been submitted. We appreciate your feedback!`;
                 
                 // Insert success message at top of form
                 reviewForm.parentNode.insertBefore(successDiv, reviewForm);
