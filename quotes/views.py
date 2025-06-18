@@ -56,7 +56,8 @@ def quote_request(request):
         'form': form, 
         'review_form': review_form,
         'success': success,
-        'review_success': review_success
+        'review_success': review_success,
+        'reviews': Review.objects.all()[:20]  # Show latest 20 reviews
     })
 
 def thank_you(request):

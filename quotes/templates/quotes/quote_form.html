@@ -56,7 +56,7 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:type" content="image/jpeg">
     
-    <link rel="stylesheet" href="{% static 'quotes/css/style.css' %}?v=22">
+    <link rel="stylesheet" href="{% static 'quotes/css/style.css' %}?v=23">
     
     <!-- Structured Data (JSON-LD) for Rich Snippets -->
     <script type="application/ld+json">
@@ -212,6 +212,47 @@
                     <button type="submit" aria-label="Submit review">Submit Review</button>
                 </form>
             </div>
+        </div>
+        
+        <!-- Reviews Display Section -->
+        <div class="reviews-display-container">
+            <h2>Customer Reviews</h2>
+            {% if reviews %}
+                <div class="reviews-grid">
+                    {% for review in reviews %}
+                        <div class="review-bubble">
+                            <div class="review-header">
+                                <div class="review-name">{{ review.name }}</div>
+                                <div class="review-rating">
+                                    {% if review.rating != 'none' %}
+                                        {% for i in "12345" %}
+                                            {% if forloop.counter <= review.rating|add:0 %}
+                                                <span class="review-star filled">★</span>
+                                            {% else %}
+                                                <span class="review-star">★</span>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% else %}
+                                        <span class="no-rating">No rating</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% if review.description != 'none' %}
+                                <div class="review-description">
+                                    "{{ review.description }}"
+                                </div>
+                            {% endif %}
+                            <div class="review-date">
+                                {{ review.created_at|date:"M d, Y" }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="no-reviews">
+                    <p>No reviews yet. Be the first to leave a review!</p>
+                </div>
+            {% endif %}
         </div>
         
         <!-- Image Carousel Section -->
