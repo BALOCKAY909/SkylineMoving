@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import QuoteRequestForm, ReviewForm
 from .models import Review
 from django.core.mail import send_mail
-from django.http import JsonResponse
+from django.http import JsonResponse, Http404
 from django.db.models import Case, When, IntegerField
 import json
 
@@ -79,7 +79,7 @@ def thank_you(request):
     return render(request, 'quotes/thank_you.html')
 
 def all_reviews(request):
-    """Display all reviews on a dedicated page"""
+    """Display all reviews on a dedicated page - only accessible if there are more than 4 reviews"""
     # Sort reviews by rating (5 stars first, then 4, 3, 2, 1, then none)
     reviews = Review.objects.annotate(
         rating_order=Case(
@@ -92,6 +92,10 @@ def all_reviews(request):
             output_field=IntegerField(),
         )
     ).order_by('-rating_order', '-created_at')
+    
+    # If there are 4 or fewer reviews, redirect to home page
+    if reviews.count() <= 4:
+        return redirect('quote_request')
     
     return render(request, 'quotes/all_reviews.html', {
         'reviews': reviews
