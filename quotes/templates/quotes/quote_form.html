@@ -3,17 +3,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'quotes/css/style.css' %}?v=25">
+    <link rel="stylesheet" href="{% static 'quotes/css/style.css' %}?v=26">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta Tags -->
     <title>Skyline Moving Nebraska - Professional Moving Company Omaha Lincoln | Free Quote</title>
     <meta name="description" content="Skyline Moving - Nebraska's trusted professional moving company serving Omaha, Lincoln, and surrounding areas. Local and long-distance moving services. Family-owned movers with 6+ years experience. Get your free moving quote today!">
     <meta name="keywords" content="Nebraska moving company, Omaha movers, Lincoln moving services, professional movers Nebraska, local moving Omaha, residential movers Lincoln, Nebraska moving services, affordable movers, reliable moving company Nebraska, Skyline Moving">
-    <meta name="author" content="Skyline Moving">
+    <meta name="author" content="Skyline Moving Nebraska">
     <meta name="robots" content="index, follow">
     <meta name="application-name" content="Skyline Moving Nebraska">
     <meta name="apple-mobile-web-app-title" content="Skyline Moving Nebraska">
+    <meta name="publisher" content="Skyline Moving Nebraska">
+    <meta name="copyright" content="Skyline Moving Nebraska">
+    <meta name="organization" content="Skyline Moving Nebraska">
     
     <!-- Open Graph Meta Tags (for social media sharing) -->
     <meta property="og:title" content="Skyline Moving Nebraska - Professional Moving Company Omaha Lincoln">
@@ -59,19 +62,46 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:type" content="image/jpeg">
     
-    <link rel="stylesheet" href="{% static 'quotes/css/style.css' %}?v=23">
-    
     <!-- Structured Data (JSON-LD) for Rich Snippets -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Skyline Moving Nebraska",
+        "alternateName": ["Skyline Moving", "Skyline Moving Company"],
+        "url": "https://skylinemovinggp.com/",
+        "logo": "https://skylinemovinggp.com{% static 'quotes/img/IMG_4687.jpg' %}",
+        "sameAs": [
+            "https://www.facebook.com/people/Skyline-Movers/61575602127611/"
+        ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Skyline Moving Nebraska",
+        "alternateName": "Skyline Moving",
+        "url": "https://skylinemovinggp.com/",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://skylinemovinggp.com/?search={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
         "@type": "MovingCompany",
-        "name": "Skyline Moving",
-        "alternateName": "Skyline Moving Nebraska",
+        "name": "Skyline Moving Nebraska",
+        "alternateName": "Skyline Moving",
         "description": "Nebraska's trusted professional moving company serving Omaha, Lincoln, and surrounding areas. Family-owned business with 6+ years of moving experience providing reliable, affordable local and long-distance moving services.",
-        "url": "https://www.skylinemovinggp.com/",
-        "logo": "https://www.skylinemovinggp.com{% static 'quotes/img/IMG_4687.jpg' %}",
-        "image": "https://www.skylinemovinggp.com{% static 'quotes/img/IMG_4687.jpg' %}",
+        "url": "https://skylinemovinggp.com/",
+        "logo": "https://skylinemovinggp.com{% static 'quotes/img/IMG_4687.jpg' %}",
+        "image": "https://skylinemovinggp.com{% static 'quotes/img/IMG_4687.jpg' %}",
         "telephone": "531-222-5122",
         "priceRange": "$$",
         "address": {
