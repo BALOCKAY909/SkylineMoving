@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /all-reviews/
+
+Sitemap: https://skylinemovinggp.com/sitemap.xml
