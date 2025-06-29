@@ -29,3 +29,11 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+# Debug and test scripts
+debug_*.py
+test_*.py
+add_*_review.py
+cleanup_*.py
+fix_*.py
+check_*.py
