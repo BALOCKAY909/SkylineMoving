@@ -21,9 +21,8 @@ try:
     # Try to create a test review
     test_review = Review.objects.create(
         name="Test User",
-        location="Test City, TS",
-        rating=5,
-        review_text="This is a test review to verify PostgreSQL persistence."
+        rating="5",
+        description="This is a test review to verify PostgreSQL persistence."
     )
     print(f"✅ Test review created with ID: {test_review.id}")
     
@@ -35,7 +34,7 @@ try:
     all_reviews = Review.objects.all()
     print("\nAll reviews in database:")
     for review in all_reviews:
-        print(f"- {review.name} ({review.location}): {review.rating}/5 - {review.review_text[:50]}...")
+        print(f"- {review.name}: {review.rating}/5 - {review.description[:50]}...")
     
     print(f"\n✅ Database is persistent and working correctly!")
     
