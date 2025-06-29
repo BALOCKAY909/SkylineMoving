@@ -100,3 +100,15 @@ def all_reviews(request):
     return render(request, 'quotes/all_reviews.html', {
         'reviews': reviews
     })
+
+def services(request):
+    """Display comprehensive services page"""
+    return render(request, 'quotes/services.html')
+
+def areas_served(request):
+    """Display areas served page"""
+    return render(request, 'quotes/areas_served.html')
+
+def moving_tips(request):
+    """Display moving tips and guide page"""
+    return render(request, 'quotes/moving_tips.html')
