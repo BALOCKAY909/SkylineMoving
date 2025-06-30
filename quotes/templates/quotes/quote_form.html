@@ -1,5 +1,19 @@
-{% load static %}
-<!DOCTYPE html>
+{% load static    <meta name="application-name" content="Skyline Moving Nebraska">
+    <meta name="apple-mobile-web-app-title" content="Skyline Moving Nebraska">
+    <meta name="publisher" content="Skyline Moving Nebraska - Professional Movers">
+    <meta name="copyright" content="Skyline Moving Nebraska - Licensed Moving Company">
+    <meta name="organization" content="Skyline Moving - Omaha Nebraska Moving Services">
+    
+    <!-- Site Name for Search Engines -->
+    <meta property="og:site_name" content="Skyline Moving Nebraska">
+    <meta name="twitter:site" content="@SkylineMovingNE">
+    <meta name="twitter:creator" content="@SkylineMovingNE">
+    
+    <!-- Additional Business Information -->
+    <meta name="geo.region" content="US-NE">
+    <meta name="geo.placename" content="Omaha, Nebraska">
+    <meta name="geo.position" content="41.2524;-95.9980">
+    <meta name="ICBM" content="41.2524, -95.9980">`!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -68,12 +82,20 @@
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Skyline Moving Nebraska",
-        "alternateName": ["Skyline Moving", "Skyline Moving Company"],
+        "legalName": "Skyline Moving Nebraska",
+        "alternateName": ["Skyline Moving", "Skyline Moving Company", "Skyline Movers"],
         "url": "https://skylinemovinggp.com/",
         "logo": "https://skylinemovinggp.com{% static 'quotes/img/IMG_4687.jpg' %}",
         "sameAs": [
             "https://www.facebook.com/people/Skyline-Movers/61575602127611/"
-        ]
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Omaha",
+            "addressRegion": "NE",
+            "addressCountry": "US"
+        },
+        "telephone": "531-222-5122"
     }
     </script>
     
@@ -84,6 +106,10 @@
         "name": "Skyline Moving Nebraska",
         "alternateName": "Skyline Moving",
         "url": "https://skylinemovinggp.com/",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Skyline Moving Nebraska"
+        },
         "potentialAction": {
             "@type": "SearchAction",
             "target": "https://skylinemovinggp.com/?search={search_term_string}",
@@ -96,8 +122,9 @@
     {
         "@context": "https://schema.org",
         "@type": "MovingCompany",
-        "name": "Skyline Moving",
-        "alternateName": ["Skyline Moving Nebraska", "Skyline Moving Company", "Skyline Movers", "Omaha Moving Company", "Nebraska Professional Movers"],
+        "name": "Skyline Moving Nebraska",
+        "legalName": "Skyline Moving Nebraska",
+        "alternateName": ["Skyline Moving", "Skyline Moving Company", "Skyline Movers", "Omaha Moving Company", "Nebraska Professional Movers"],
         "description": "Omaha's #1 rated professional moving company serving Nebraska. Expert local and long-distance movers with 6+ years experience. Residential, commercial, apartment, office, and specialty moving services. Licensed, insured, and family-owned. FREE quotes available 24/7.",
         "url": "https://skylinemovinggp.com/",
         "logo": "https://skylinemovinggp.com{% static 'quotes/img/IMG_4687.jpg' %}",
