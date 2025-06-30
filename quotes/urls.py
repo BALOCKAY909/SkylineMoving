@@ -7,5 +7,4 @@ urlpatterns = [
     path('all-reviews/', views.all_reviews, name='all_reviews'),
     path('services/', views.services, name='services'),
     path('areas-served/', views.areas_served, name='areas_served'),
-    path('moving-tips/', views.moving_tips, name='moving_tips'),
 ]

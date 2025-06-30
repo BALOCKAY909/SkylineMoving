@@ -108,7 +108,3 @@ def services(request):
 def areas_served(request):
     """Display areas served page"""
     return render(request, 'quotes/areas_served.html')
-
-def moving_tips(request):
-    """Display moving tips and guide page"""
-    return render(request, 'quotes/moving_tips.html')
