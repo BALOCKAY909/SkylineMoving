@@ -15,13 +15,13 @@ class Command(BaseCommand):
         
         reviews_to_delete = Review.objects.filter(
             name__in=inappropriate_names,
-            date_created__date=target_date.date()
+            created_at__date=target_date.date()
         )
         
         print(f"Found {reviews_to_delete.count()} reviews to delete:")
         
         for review in reviews_to_delete:
-            print(f"- ID: {review.id}, Name: '{review.name}', Comment: '{review.comment[:50]}...', Date: {review.date_created}")
+            print(f"- ID: {review.id}, Name: '{review.name}', Comment: '{review.description[:50]}...', Date: {review.created_at}")
         
         if reviews_to_delete.exists():
             # Delete without confirmation in automated environment
