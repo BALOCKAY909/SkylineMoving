@@ -370,6 +370,38 @@ button[type="submit"]:hover {
     border-radius: 50%;
 }
 
+/* Instagram Logo Button */
+.instagram-button {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 4px 12px 0 rgba(225, 48, 108, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid #e1306c;
+    margin-left: 10px; /* Space between Nextdoor and Instagram buttons */
+}
+
+.instagram-button:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 8px 20px 0 rgba(225, 48, 108, 0.5);
+}
+
+.instagram-button img {
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    border-radius: 50%;
+}
+
 /* Container for social buttons to keep them aligned */
 .social-buttons {
     display: inline-flex;
