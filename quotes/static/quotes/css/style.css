@@ -360,12 +360,14 @@ button[type="submit"]:hover {
 }
 
 .nextdoor-button img {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 /* Container for social buttons to keep them aligned */
