@@ -314,12 +314,13 @@ button[type="submit"]:hover {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: #1877f2;
+    background: #ffffff;
     box-shadow: 0 4px 12px 0 rgba(24, 119, 242, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-decoration: none;
     overflow: hidden;
     position: relative;
+    border: 2px solid #1877f2;
 }
 
 .facebook-button:hover {
@@ -328,13 +329,13 @@ button[type="submit"]:hover {
 }
 
 .facebook-button img {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    filter: brightness(0) invert(1); /* Make the logo white */
+    /* Removed the filter to show the actual Facebook logo */
 }
 
 /* Forms Container for Side-by-Side Layout */
