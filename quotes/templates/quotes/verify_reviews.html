@@ -218,10 +218,14 @@
                 <div class="no-reviews">
                     <h3>No Pending Reviews</h3>
                     <p>All reviews have been processed. Check back later for new submissions.</p>
-                    <a href="{% url 'quote_request' %}" class="btn btn-approve">Back to Website</a>
                 </div>
             </div>
         {% endif %}
+        
+        <!-- Back to Website button outside of cards -->
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="{% url 'quote_request' %}" class="btn btn-approve">Back to Website</a>
+        </div>
     </div>
 </body>
 </html>
