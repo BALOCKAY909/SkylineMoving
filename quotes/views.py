@@ -4,6 +4,9 @@ from .models import Review
 from django.core.mail import send_mail
 from django.http import JsonResponse, Http404
 from django.db.models import Case, When, IntegerField
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 import json
 
 # Create your views here.
@@ -53,8 +56,8 @@ def quote_request(request):
         form = QuoteRequestForm()
         review_form = ReviewForm()
     
-    # Sort reviews by rating (5 stars first, then 4, 3, 2, 1, then none)
-    all_reviews = Review.objects.annotate(
+    # Sort reviews by rating (5 stars first, then 4, 3, 2, 1, then none) - Only show approved reviews
+    all_reviews = Review.objects.filter(approval_status='approved').annotate(
         rating_order=Case(
             When(rating='5', then=5),
             When(rating='4', then=4),
@@ -79,9 +82,9 @@ def thank_you(request):
     return render(request, 'quotes/thank_you.html')
 
 def all_reviews(request):
-    """Display all reviews on a dedicated page - only accessible if there are more than 4 reviews"""
-    # Sort reviews by rating (5 stars first, then 4, 3, 2, 1, then none)
-    reviews = Review.objects.annotate(
+    """Display all approved reviews on a dedicated page - only accessible if there are more than 4 reviews"""
+    # Sort reviews by rating (5 stars first, then 4, 3, 2, 1, then none) - Only show approved reviews
+    reviews = Review.objects.filter(approval_status='approved').annotate(
         rating_order=Case(
             When(rating='5', then=5),
             When(rating='4', then=4),
@@ -93,7 +96,7 @@ def all_reviews(request):
         )
     ).order_by('-rating_order', '-created_at')
     
-    # If there are 4 or fewer reviews, redirect to home page
+    # If there are 4 or fewer approved reviews, redirect to home page
     if reviews.count() <= 4:
         return redirect('quote_request')
     
@@ -108,3 +111,50 @@ def services(request):
 def areas_served(request):
     """Display areas served page"""
     return render(request, 'quotes/areas_served.html')
+
+def review_login(request):
+    """Login page for review verification"""
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('verify_reviews')
+        else:
+            messages.error(request, 'Invalid username or password.')
+    
+    return render(request, 'quotes/review_login.html')
+
+@login_required
+def verify_reviews(request):
+    """Page to approve/reject reviews"""
+    if request.method == 'POST':
+        review_id = request.POST.get('review_id')
+        action = request.POST.get('action')
+        
+        try:
+            review = Review.objects.get(id=review_id)
+            if action == 'approve':
+                review.approval_status = 'approved'
+                messages.success(request, f'Review by {review.name} has been approved.')
+            elif action == 'reject':
+                review.approval_status = 'rejected'
+                messages.success(request, f'Review by {review.name} has been rejected.')
+            review.save()
+        except Review.DoesNotExist:
+            messages.error(request, 'Review not found.')
+    
+    # Get all pending reviews
+    pending_reviews = Review.objects.filter(approval_status='pending').order_by('-created_at')
+    
+    return render(request, 'quotes/verify_reviews.html', {
+        'pending_reviews': pending_reviews
+    })
+
+@login_required
+def review_logout(request):
+    """Logout and redirect to home"""
+    logout(request)
+    return redirect('quote_request')

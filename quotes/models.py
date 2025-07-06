@@ -13,13 +13,20 @@ class Review(models.Model):
         ('none', 'No Rating'),
     ]
     
+    APPROVAL_CHOICES = [
+        ('pending', 'Pending Review'),
+        ('approved', 'Approved'),
+        ('rejected', 'Rejected'),
+    ]
+    
     name = models.CharField(max_length=100, default='Anonymous')
     rating = models.CharField(max_length=4, choices=STAR_CHOICES, default='none')
     description = models.TextField(default='none')
     created_at = models.DateTimeField(default=timezone.now)
+    approval_status = models.CharField(max_length=10, choices=APPROVAL_CHOICES, default='pending')
     
     def __str__(self):
-        return f"{self.name} - {self.rating} stars"
+        return f"{self.name} - {self.rating} stars - {self.approval_status}"
     
     class Meta:
         ordering = ['-created_at']  # Most recent first
