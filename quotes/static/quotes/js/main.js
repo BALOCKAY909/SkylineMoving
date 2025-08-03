@@ -26,8 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.querySelectorAll('input, textarea').forEach(function(el) {
         // Skip validation for review form fields (they're optional)
-        if ((el.name === 'name' && el.id === 'reviewName') || 
-            (el.name === 'description' && el.id === 'reviewText')) {
+        if (el.closest('#reviewForm')) {
             return;
         }
         
@@ -71,18 +70,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Prevent form submission if any field is invalid
-    var form = document.querySelector('form');
-    if (form) {
-        form.addEventListener('submit', function(e) {
+    // Prevent form submission if any field is invalid - but only for the quote form
+    var quoteForm = document.querySelector('.quote-form-container form');
+    if (quoteForm) {
+        quoteForm.addEventListener('submit', function(e) {
             var valid = true;
-            document.querySelectorAll('input, textarea').forEach(function(el) {
-                // Skip validation for review form fields (they're optional)
-                if ((el.name === 'name' && el.id === 'reviewName') || 
-                    (el.name === 'description' && el.id === 'reviewText')) {
-                    return;
-                }
-                
+            // Only validate fields within the quote form
+            quoteForm.querySelectorAll('input, textarea').forEach(function(el) {
                 if (!el.value) {
                     showError(el);
                     valid = false;
