@@ -47,7 +47,7 @@ def sitemap_xml(request):
     return HttpResponse(content, content_type="application/xml")
 
 def favicon_view(request):
-    favicon_path = os.path.join(settings.BASE_DIR, 'quotes', 'static', 'quotes', 'img', 'IMG_4687.jpg')
+    favicon_path = os.path.join(settings.BASE_DIR, 'quotes', 'static', 'quotes', 'img', 'IMG_5328.JPG')
     return FileResponse(open(favicon_path, 'rb'), content_type='image/jpeg')
 
 urlpatterns = [
