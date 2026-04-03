@@ -25,11 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     document.querySelectorAll('input, textarea').forEach(function(el) {
-        // Skip validation for review form fields (they're optional)
-        if (el.closest('#reviewForm')) {
-            return;
-        }
-        
         el.addEventListener('blur', function() {
             if (!el.value) {
                 showError(el);
@@ -236,92 +231,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Star Rating Functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const stars = document.querySelectorAll('.star');
-    const ratingInput = document.getElementById('reviewRating'); // Django form field
-    let currentRating = 0; // Default to no rating
-    
-    // Set initial state - no stars selected
-    updateStarDisplay(0);
-    if (ratingInput) {
-        ratingInput.value = '';
-    }
-    
-    stars.forEach(star => {
-        star.addEventListener('click', function() {
-            currentRating = parseInt(this.getAttribute('data-rating'));
-            if (ratingInput) {
-                ratingInput.value = currentRating;
-            }
-            updateStarDisplay(currentRating);
-        });
-        
-        star.addEventListener('mouseenter', function() {
-            const hoverRating = parseInt(this.getAttribute('data-rating'));
-            updateStarDisplay(hoverRating);
-        });
-    });
-    
-    // Reset to current rating when mouse leaves star area
-    const starRating = document.querySelector('.star-rating');
-    if (starRating) {
-        starRating.addEventListener('mouseleave', function() {
-            updateStarDisplay(currentRating);
-        });
-    }
-    
-    function updateStarDisplay(rating) {
-        stars.forEach((star, index) => {
-            if (index < rating) {
-                star.classList.add('active');
-            } else {
-                star.classList.remove('active');
-            }
-        });
-    }
-    
-    // Form validation (client-side backup)
-    const reviewForm = document.getElementById('reviewForm');
-    if (reviewForm) {
-        reviewForm.addEventListener('submit', function(e) {
-            const rating = ratingInput ? ratingInput.value : '';
-            const reviewText = document.getElementById('reviewText') ? document.getElementById('reviewText').value : '';
-            
-            // Check if both rating and description are empty
-            if (!rating && !reviewText.trim()) {
-                e.preventDefault();
-                alert('Please provide either a rating or a review description.');
-                return false;
-            }
-        });
-    }
-    
-    // Hide success message when user interacts with review form
-    const successMessage = document.getElementById('review-success-message');
-    
-    function hideSuccessMessage() {
-        if (successMessage) {
-            successMessage.style.display = 'none';
-        }
-    }
-    
-    // Hide success message on form field interactions
-    const nameField = document.getElementById('reviewName');
-    const descriptionField = document.getElementById('reviewText');
-    
-    if (nameField) {
-        nameField.addEventListener('focus', hideSuccessMessage);
-        nameField.addEventListener('input', hideSuccessMessage);
-    }
-    
-    if (descriptionField) {
-        descriptionField.addEventListener('focus', hideSuccessMessage);
-        descriptionField.addEventListener('input', hideSuccessMessage);
-    }
-    
-    // Hide success message when clicking on stars
-    stars.forEach(star => {
-        star.addEventListener('click', hideSuccessMessage);
-    });
-});
+// Removed star rating + review form JS block as requested
