@@ -8,15 +8,15 @@ body {
 
 /* Top Navigation Bar */
 .top-navbar {
-    background: #000;
+    background: #fff;
     display: flex;
     align-items: stretch;
     padding: 0 24px 0 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-    height: 70px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    height: 90px;
 }
 
 .top-navbar a.logo-link {
