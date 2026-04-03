@@ -42,6 +42,28 @@ body {
     gap: 10px;
 }
 
+.top-navbar .call-button {
+    margin-left: auto;
+    display: inline-block;
+    background: linear-gradient(90deg, #ffe066 0%, #ffb347 100%);
+    color: #222;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 0.55rem 1.6rem;
+    font-size: 1rem;
+    text-decoration: none;
+    box-shadow: 0 2px 8px 0 rgba(255, 176, 71, 0.2);
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    white-space: nowrap;
+}
+
+.top-navbar .call-button:hover {
+    background: linear-gradient(90deg, #ffb347 0%, #ff7f50 100%);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
 /* Keep legacy .logo-container hidden / removed from use */
 .logo-container {
     display: none;
