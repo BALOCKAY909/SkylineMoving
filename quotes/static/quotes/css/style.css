@@ -11,20 +11,12 @@ body {
     background: #fff;
     display: flex;
     align-items: stretch;
-    padding: 0 24px 0 0;
+    padding: 0 24px 0 20px;
     position: sticky;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    height: 90px;
-}
-
-.top-navbar a.logo-link {
-    display: flex;
-    align-items: stretch;
-    height: 100%;
-    margin-right: 18px;
-    flex-shrink: 0;
+    height: 120px;
 }
 
 .top-navbar .logo {
@@ -34,6 +26,9 @@ body {
     filter: none;
     transition: none;
     pointer-events: none;
+    cursor: default;
+    margin-right: 18px;
+    flex-shrink: 0;
 }
 
 .top-navbar .logo:hover {
