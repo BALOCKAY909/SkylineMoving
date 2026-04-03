@@ -363,7 +363,6 @@
         </style>
         <a href="/services/" class="nav-link" style="color: #ffb347; text-decoration: none; margin: 0 25px; font-weight: bold; font-size: 18px; transition: color 0.3s;">Our Services</a> |
         <a href="/areas-served/" class="nav-link" style="color: #ffb347; text-decoration: none; margin: 0 25px; font-weight: bold; font-size: 18px; transition: color 0.3s;">Areas Served</a> |
-        <a href="#reviews" class="nav-link" style="color: #ffb347; text-decoration: none; margin: 0 25px; font-weight: bold; font-size: 18px; transition: color 0.3s;">Reviews</a> |
         <a href="#about" class="nav-link" style="color: #ffb347; text-decoration: none; margin: 0 25px; font-weight: bold; font-size: 18px; transition: color 0.3s;">About Us</a>
     </div>
     <div class="quote-form-bg">
@@ -382,60 +381,6 @@
                 </form>
             </div>
             
-        </div>
-        
-        <!-- Reviews Display Section -->
-        <div class="reviews-display-container" id="reviews">
-            <h2>Customer Reviews - Why Omaha Chooses Skyline Moving</h2>
-            <div class="reviews-intro" style="text-align: center; margin-bottom: 20px;">
-                <p><strong>Real Reviews from Real Customers</strong> - See why we're Omaha's top-rated moving company!</p>
-            </div>
-            {% if reviews %}
-                <div class="reviews-grid">
-                    {% for review in reviews %}
-                        <div class="review-bubble">
-                            <div class="review-header">
-                                <div class="review-name">{{ review.name }}</div>
-                                <div class="review-rating">
-                                    {% if review.rating != 'none' %}
-                                        {% for i in "12345" %}
-                                            {% if forloop.counter <= review.rating|add:0 %}
-                                                <span class="review-star filled">★</span>
-                                            {% else %}
-                                                <span class="review-star">★</span>
-                                            {% endif %}
-                                        {% endfor %}
-                                    {% else %}
-                                        <span class="no-rating">No rating</span>
-                                    {% endif %}
-                                </div>
-                            </div>
-                            {% if review.description != 'none' %}
-                                <div class="review-description">
-                                    "{{ review.description }}"
-                                </div>
-                            {% endif %}
-                            <div class="review-date">
-                                Posted on {{ review.created_at|date:"F j, Y" }}
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-                
-                <!-- See All Reviews Button - Only show if more than 4 reviews -->
-                {% if total_reviews_count > 4 %}
-                <div class="see-all-reviews">
-                    <a href="{% url 'all_reviews' %}" class="see-all-button">
-                        <span class="see-all-text">See all Reviews</span>
-                        <span class="down-arrow">↓</span>
-                    </a>
-                </div>
-                {% endif %}
-            {% else %}
-                <div class="no-reviews">
-                    <p>No reviews yet. Be the first to leave a review!</p>
-                </div>
-            {% endif %}
         </div>
         
         <!-- Image Carousel Section -->
