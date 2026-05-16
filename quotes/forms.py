@@ -4,7 +4,7 @@ import re
 class QuoteRequestForm(forms.Form):
     first_name = forms.CharField(max_length=30, label='First Name', widget=forms.TextInput(attrs={'required': 'required'}))
     last_name = forms.CharField(max_length=30, label='Last Name', widget=forms.TextInput(attrs={'required': 'required'}))
-    email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'required': 'required', 'pattern': r'.+@.+\.(com|net)$'}))
+    email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'required': 'required'}))
     phone = forms.CharField(max_length=20, label='Phone Number', widget=forms.TextInput(attrs={'required': 'required', 'pattern': r'^(\+1\s?)?(\(?\d{3}\)?[\s-]?)?\d{3}[\s-]?\d{4}$'}))
     job_description = forms.CharField(widget=forms.Textarea(attrs={'required': 'required'}), label='Job Description')
 
