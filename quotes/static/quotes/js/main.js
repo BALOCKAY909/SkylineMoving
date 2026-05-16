@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             } else if (el.name === 'email') {
                 var emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-                if (!emailPattern.test(el.value) || !el.value.endsWith('.com')) {
+                if (!emailPattern.test(el.value) || (!el.value.endsWith('.com') && !el.value.endsWith('.net'))) {
                     showError(el);
                 } else {
                     el.classList.remove('input-error');
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 } else if (el.name === 'email') {
                     var emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-                    if (!emailPattern.test(el.value) || !el.value.endsWith('.com')) {
+                    if (!emailPattern.test(el.value) || (!el.value.endsWith('.com') && !el.value.endsWith('.net'))) {
                         showError(el);
                         valid = false;
                     }
